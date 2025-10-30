@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 
 // usecallback yad rakhne k liye he agr koi chiz change na ho to wo firse na banaye, useeffect me use karte he jb koi chiz change ho to firse call karne k liye ex
-// page refresh karo to already ek generated password dikhe, useRef ka use tab karte he jb hme kisi chiz ko persist karna ho bina re render
+// page refresh karo to already ek generated password dikhe, useRef ka use tab karte he jb hme kisi chiz ko persist karna ho 
 // ke ex input field me cursor ki position ya fir previous state ko store karna ho bina re render ke, example yahan input lene he aur wo bhi 
 // ek specific input field ka button ka sath
 function App() {
