@@ -1,17 +1,13 @@
 import React, { useId } from "react"
-
-
 function InputBox({
 label, 
 amount, 
 onAmountChange,
 onCurrencyChange,
 currencyOptions = [], //ye array hoga jisme sari currencies hongi, aur agar user ne kuch pass nahi kiya to ye empty array hi rahega
-selectCurrency = "usd", //default value usd he agr user ne kuch pass nahi kiya
+selectCurrency = "", //default value usd he agr user ne kuch pass nahi kiya
 amountDisabled = false, //agr user ne kuch pass nahi kiya to false hi rahega, agr user amount nahin dalna chahta to true pass karega, user change karsakta he isko
-
-
-
+currencyDisabled = false, //agr user ne kuch pass nahi kiya to false hi rahega, agr user currency nahin dalna chahta to true pass karega, user change karsakta he isko
 className = "",
 }) {
 
@@ -45,7 +41,6 @@ return (
                 value={selectCurrency}
                 onChange={(e)=> onCurrencyChange && onCurrencyChange(e.target.value)}
                 disabled={currencyDisabled}
-                
             >
                 
                     {currencyOptions.map((currency) => (
@@ -53,6 +48,7 @@ return (
                     ))}
             
             </select>
+            
         </div>
     </div>
 );
