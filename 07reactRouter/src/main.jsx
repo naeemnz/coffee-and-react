@@ -2,11 +2,14 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
 import Layout from './Layout.jsx'
 import Home from './components/Home/Home.jsx'
 import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
+import { Route } from 'react-router-dom'
+import User from './components/User/User.jsx'
+import Github from './components/Github/Github.jsx'
 
 
 // ye ek method he jise humne import kiya he react router dom se jis men ek array he aur is array men hum apne sare objects dalte hen jo humare routes ko define karte hen
@@ -32,6 +35,20 @@ import Contact from './components/Contact/Contact.jsx'
 // ])
 
 //uper wale tariqe ka alternative he aur thora asan bhi he ye tariqa
+//ye ek method he jismen hum ek aur method use karenge jo create routes from element se hoga na k children property se yad rahe
+// const router  = createBrowserRouter([])// hum array ki jagah dobara call back func denge
+const router  = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Layout />}>
+      <Route path='' element={<Home />} />
+      <Route path='about' element={<About />} />
+      <Route path='contact' element={<Contact />} />
+      {/* iska syntax hota he user/:id ya niche wala, jo bhi paramter liya he yahan humne us ka access usk componenet men automatically milga humen */}
+      <Route path='user/:userid' element={<User />} />
+      <Route path='github' element={<Github />} />
+    </Route>
+  )
+)
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <App /> , niche wala componenet sirf ek prop leta he jo he router aur jise hume banana padega */}
