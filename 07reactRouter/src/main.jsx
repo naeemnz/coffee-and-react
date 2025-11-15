@@ -43,6 +43,8 @@ const router  = createBrowserRouter(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
       <Route path='about' element={<About />} />
+      {/* example agur further routing karni he to matlb /about/example */}
+      {/* <Route path='about' element={<About />} ><Route path='example'/> */}
       <Route path='contact' element={<Contact />} />
       {/* iska syntax hota he user/:id ya niche wala, jo bhi paramter liya he yahan humne us ka access usk componenet men automatically milga humen */}
       <Route path='user/:userid' element={<User />} />
