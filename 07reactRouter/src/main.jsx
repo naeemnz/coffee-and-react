@@ -9,7 +9,8 @@ import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import { Route } from 'react-router-dom'
 import User from './components/User/User.jsx'
-import Github from './components/Github/Github.jsx'
+import Github, { githubInfoLoader } from './components/Github/Github.jsx'
+//easy rehta he k componenet aur jismen api call he sath rakho isliye
 
 
 // ye ek method he jise humne import kiya he react router dom se jis men ek array he aur is array men hum apne sare objects dalte hen jo humare routes ko define karte hen
@@ -45,7 +46,11 @@ const router  = createBrowserRouter(
       <Route path='contact' element={<Contact />} />
       {/* iska syntax hota he user/:id ya niche wala, jo bhi paramter liya he yahan humne us ka access usk componenet men automatically milga humen */}
       <Route path='user/:userid' element={<User />} />
-      <Route path='github' element={<Github />} />
+      <Route 
+      //hum loader men bhi api fetch karsakte hen, api call hoti hen aur data fetching shoro hoti he sirf mouse ko lejane se hi beghair click k liye, aur ye optimisation k liye he
+      loader = {githubInfoLoader}
+      path='github' 
+      element={<Github />} />
     </Route>
   )
 )
