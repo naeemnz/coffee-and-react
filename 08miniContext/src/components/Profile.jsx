@@ -6,7 +6,7 @@ function Profile() {
     //hum yahan conditional return karenge 
     if(!user) return <div>Please Login</div>
 
-    return <div>Welcome {user.username}!</div> //user men se extract karenge username
+    return <div>Welcome {user.username}...!</div> //user men se extract karenge username
    
 }
 export default Profile
