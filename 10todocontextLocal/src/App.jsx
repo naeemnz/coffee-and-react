@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import './App.css'
 import { TodoProvider } from './contexts';
+import { TodoForm, TodoItem } from './components';
 
 function App() {
 
@@ -26,10 +27,21 @@ function App() {
 
   // hamara todo ek object he aur yahan hum us object ki property ko access karke overwrite karrahe hen
   const toggleChecked = (id) => {
-    setTodos((prevarray) => prevarray.map((prevTodoItemIndivid) => prevTodoItemIndivid === id ? {...prevTodoItemIndivid, toggleChecked: !prevTodoItemIndivid.toggleChecked } : prevTodoItemIndivid))
+    // yahan hum objeck ki property id ko sirf compare karrahe hen
+    setTodos((prevarray) => prevarray.map((prevTodoItemIndivid) => prevTodoItemIndivid.id === id ? {...prevTodoItemIndivid, checked: !prevTodoItemIndivid.checked } : prevTodoItemIndivid))
   }
 
-  useEffect(() => {}, [43])
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem('keynTodos'));
+
+    if(savedTodos && savedTodos.length > 0) {
+      setTodos(savedTodos);
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('keynTodos', JSON.stringify(todos));
+  }, [todos])
 
   return (
   <TodoProvider value={{todos, addTodoTitle, updateTodoTitle, deleteTodoTitle, toggleChecked}}>
@@ -38,9 +50,17 @@ function App() {
               <h1 className="text-2xl font-bold text-center mb-8 mt-2">Manage Your Todos</h1>
               <div className="mb-4">
                   {/* Todo form goes here */} 
+                  <TodoForm />
               </div>
               <div className="flex flex-wrap gap-y-3">
                   {/*Loop and Add TodoItem here */}
+                  {todos.map((onetodo) => (
+                    <div 
+                    className='w-full' 
+                    key={onetodo.id}>
+                     <TodoItem todoObject={onetodo} />
+                    </div>
+                  ))}
               </div>
           </div>
         </div>
