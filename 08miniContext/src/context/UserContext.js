@@ -1,9 +1,9 @@
 import React from 'react'
 // The React Context API was released to avoid prop drilling by simplifying state management and making sharing 
 // data across the component tree more efficient and error-free.
-const userContext = React.createContext()
+const UserContext = React.createContext()
 
-export default userContext
+export default UserContext
 
 /*
 Hume context ek varibale provide karraha he to iska matlab har context ek provider hota he

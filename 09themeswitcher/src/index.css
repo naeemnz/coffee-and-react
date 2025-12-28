@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* darkmode k kam na karne ki waja tailwind ka new version he jis me humen tailwind.config.js ki file nahi milti he aur zarorat nahi hoti v4 me tail wind k
+jubk v3 me humen config file chahiye hoti he aur usmen darkMode: "class" add karna parta he */
+
+/* for Tailwind CSS v4.1*/
+@variant dark (&:where(.dark, .dark *));
