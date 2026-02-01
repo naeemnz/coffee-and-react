@@ -34,6 +34,7 @@ export class AuthService {
                 throw error;
             }
         }
+        // getCurrentUser
         async userLoginCheck() {
             try {
                 return await this.account.get();
